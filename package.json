@@ -22,10 +22,10 @@
     "name": "tem-cli",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/youshiyu/ma-cli.git"
+        "url": "git+https://github.com/youshiyu/tem-cli.git"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "1.0.2"
+    "version": "1.0.3"
 }
