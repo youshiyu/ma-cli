@@ -9,7 +9,7 @@ if(command[0] === 'version') {
 }
 if(command[0] === 'init')
 {
-  console.log('新建模板:tem-cli init')
+  console.log('新建模板:init')
   return ;
 }
 

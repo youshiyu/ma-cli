@@ -4,7 +4,7 @@
         "email": "444794227@qq.com"
     },
     "bin": {
-        "tem-cli init": "bin/create-ma-template",
+        "init": "bin/create-ma-template",
         "tem-cli":"bin/help"
     },
     "dependencies": {
