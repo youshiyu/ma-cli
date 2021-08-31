@@ -19,7 +19,7 @@
     "description": "一个脚手架，通过交互式命令从指定git模板物料的代码生成新项目",
     "license": "ISC",
     "main": "index.js",
-    "name": "l",
+    "name": "tem-cli",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/youshiyu/ma-cli.git"
@@ -27,6 +27,5 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "1.0.0",
-    "material-type": "block"
+    "version": "1.0.0"
 }
