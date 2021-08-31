@@ -1,0 +1,31 @@
+{
+    "author": {
+        "name": "youshiyu"
+    },
+    "bin": {
+        "init": "bin/create-ma-template"
+    },
+    "dependencies": {
+        "chalk": "^2.4.2",
+        "commander": "^2.19.0",
+        "download-git-repo": "^1.1.0",
+        "inquirer": "^6.2.2",
+        "ora": "^3.2.0",
+        "shelljs": "^0.8.3",
+        "yargs": "^13.2.2"
+    },
+    "deprecated": false,
+    "description": "一个脚手架，通过交互式命令从github中下载物料的模板代码生成新项目",
+    "license": "ISC",
+    "main": "index.js",
+    "name": "l",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/youshiyu/material-template.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "1.0.7",
+    "type": "block"
+}

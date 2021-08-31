@@ -1,0 +1,83 @@
+#!/usr/bin/env node
+
+const inquirer = require('inquirer');
+const download = require('download-git-repo');
+const argv = require('yargs').argv;
+
+const ora = require('ora');
+const fs = require('fs');
+const spinner = ora('downloading template ...');
+
+const questions = [{
+    type: 'input',
+    name: 'projectName',
+    message: '请输入物料名字：',
+    validate(val) {
+        if (!val) {
+            return '请输入文件名';
+        }
+        if (fs.existsSync(val)) {
+            return '文件已存在';
+        } else {
+            return true;
+        };
+    }
+}, {
+    type: 'list',
+    name: 'type',
+    message: '请输入物料类型',
+    choices: [
+        { name: '1    ->  block物料模板', value: 'block' },
+        { name: '2    ->  page物料模板', value: 'page' },
+      ],
+    default: 'block',
+    validate(val) {
+        return true;
+    }
+}];
+
+const editFile = function ({ type, projectName }) {
+    console.log(process.cwd(),type,projectName);
+    // 修改package.json中的name和type
+    fs.readFile(`${process.cwd()}/${projectName}/package.json`, (err, data) => {
+        if (err) throw err;
+        let _data = JSON.parse(data.toString())
+        _data.name = projectName
+        _data.type = type
+        let str = JSON.stringify(_data, null, 4); // 第三个参数是为了控制结果字符串里面的间距，控制写入的的文件的json格式
+        fs.writeFile(`${process.cwd()}/${projectName}/package.json`, str, function (err) {
+            if (err) throw err;
+        })
+        spinner.succeed();
+    });
+
+
+};
+
+/**
+ * @description: 下载模板
+ * @param {type} 
+ * @return: 
+ */
+const downloadTemplate = function ({ type, projectName }) {
+            download(`https://github.com:youshiyu/material-template#${type}`, `${projectName}`, function (err) {
+                console.log(err ? 'Error' : 'Success') // 拉取文件成功or失败
+                if (err !== 'Error') {
+                    editFile({ type, projectName });
+                }
+              })
+};
+
+inquirer
+    .prompt(questions)
+    .then(answers => {
+        const type = answers.type;
+        const projectName = answers.projectName;
+        spinner.start();
+        spinner.color = 'green';
+        downloadTemplate({ type, projectName });
+    });
+
+
+
+
