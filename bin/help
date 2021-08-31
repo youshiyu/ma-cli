@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+var argv = require('yargs').argv;
+const program = require('commander')
+const command = argv._;
+if(command[0] === 'version') {
+    console.log('查看tem-cli版本 -V')
+    return ;
+}
+if(command[0] === 'init')
+{
+  console.log('新建模板:tem-cli init')
+  return ;
+}
+
+program
+  .version(require('../package').version)
+  .command('init', '使用远程的自定义模板')
+
+// 解析命令行参数
+program.parse(process.argv)
